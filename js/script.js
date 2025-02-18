@@ -4,12 +4,12 @@ let pecaVazia = null;
 
 //função para criar as peças do quebra cabeça
 function criarPecas() {
-    const numeros = Array.from({length: 16}, (_ ,i)=> i); //numeros de 0 a 15
+    const numeros = Array.from({length: 16}, (_ ,i) => i); //numeros de 0 a 15
     embaralharArray(numeros); //Embaralha os numeros
     
     for (let i= 0; i < 16; i++){
         const peca = document.createElement('div');
-        peca.style.backgroundImage = "url('/image/imagem.jpg')";
+        peca.style.backgroundImage = "url('/image/paisagem-natural.jpg')";
         peca.style.backgroundPosition = '${-(numeros[i] % 4) * 100}px ${-Math.floor(numeros[i] / 4) * 100}px';
         peca.dataset.numero = numeros [i]; //Armazena o numero de peça 
         peca.addEventListener('click', moverPeca); // Adicionar o evento do click
@@ -27,9 +27,9 @@ function criarPecas() {
 
 //Função para embaralhar um array (Finisher-Yates)
 function embaralharArray(array) {
-    for (let i = array.lenght - i; i > 0; i--){
+    for (let i = array.lenght - 1; i > 0; i--){
         const j = Math.floor(Math.random() * (i + 1));
-        [ array [i], array[j]] = [array[j], array[i]]
+        [ array [i], array[j]] = [array[j], array[i]];
     }
 }
 
@@ -59,5 +59,5 @@ function moverPecas(event) {
 }
 
     //Inicializar o jogo
-    criarPecas ();
+    criarPecas();
    
